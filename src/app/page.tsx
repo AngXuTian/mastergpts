@@ -1,101 +1,92 @@
-import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CreditCard, TrendingUp, AlertTriangle, Bell, Upload } from 'lucide-react'
+import { FraudDetectionAnalysis } from "./dashboard/_components/fraud-detection-analysis"
+import { CardFraudTrendChart } from "./dashboard/_components/card-fraud-trend-chart"
+import { CardFraudMetricsCards } from "./dashboard/_components/card-fraud-metrics-cards"
+import { CardFraudOverview } from "./dashboard/_components/card-fraud-overview"
+import { CardFraudTypeDistribution } from "./dashboard/_components/card-fraud-type-distribution"
+import { FraudDetectionTable } from "./dashboard/_components/recent-card-fraud-attempts"
+import { UploadFraudCase } from "./dashboard/_components/upload-fraud-case"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+const sampleTransaction = {
+  id: 1,
+  trans_date_trans_time: "2023-11-23 03:20:30",
+  cc_num: 4321567890123456,
+  merchant: "LuxuryWatches Co.",
+  category: "Jewelry",
+  amt: 5000.00,
+  first: "John",
+  last: "Doe",
+  gender: "M",
+  street: "123 Main St",
+  city: "Las Vegas",
+  state: "NV",
+  zip: 89101,
+  lat: 36.1699,
+  long: -115.1398,
+  city_pop: 651319,
+  job: "Software Engineer",
+  dob: "1985-05-15",
+  trans_num: "2b9f3a1c8e",
+  unix_time: 1700748030,
+  merch_lat: 36.1219,
+  merch_long: -115.1711
 }
+
+export default function DashboardPage() {
+  return (
+    <div className="flex-col md:flex">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">Card Fraud Detection Dashboard</h2>
+        </div>
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="overview" className="flex items-center justify-center">
+              <CreditCard className="mr-2 h-4 w-4" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="analysis" className="flex items-center justify-center">
+              <AlertTriangle className="mr-2 h-4 w-4" />
+              Fraud Analysis
+            </TabsTrigger>
+            <TabsTrigger value="trends" className="flex items-center justify-center">
+              <TrendingUp className="mr-2 h-4 w-4" />
+              Trends
+            </TabsTrigger>
+            <TabsTrigger value="alerts" className="flex items-center justify-center">
+              <Bell className="mr-2 h-4 w-4" />
+              Alerts
+            </TabsTrigger>
+            <TabsTrigger value="upload" className="flex items-center justify-center">
+              <Upload className="mr-2 h-4 w-4" />
+              Upload Case
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview" className="space-y-4">
+            <CardFraudMetricsCards />
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <CardFraudOverview />
+              <CardFraudTypeDistribution />
+            </div>
+            <FraudDetectionTable type="overview"/>
+          </TabsContent>
+          <TabsContent value="analysis" className="space-y-4">
+            <FraudDetectionAnalysis transaction={sampleTransaction} />
+          </TabsContent>
+          <TabsContent value="trends" className="space-y-4">
+            <CardFraudTrendChart />
+          </TabsContent>
+          <TabsContent value="alerts" className="space-y-4">
+          <FraudDetectionTable showAll={true} type="alerts" />
+          </TabsContent>
+          <TabsContent value="upload" className="space-y-4">
+            <UploadFraudCase />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  )
+}
+

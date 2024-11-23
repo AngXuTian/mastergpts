@@ -3,7 +3,7 @@ import { CreditCard, TrendingUp, AlertTriangle, Bell, Upload } from 'lucide-reac
 import { CardFraudOverview } from "./_components/card-fraud-overview"
 import { CardFraudTypeDistribution } from "./_components/card-fraud-type-distribution"
 import { CardFraudMetricsCards } from "./_components/card-fraud-metrics-cards"
-import { RecentCardFraudAttempts } from "./_components/recent-card-fraud-attempts"
+import { FraudDetectionTable } from "./_components/recent-card-fraud-attempts"
 import { CardFraudTrendChart } from "./_components/card-fraud-trend-chart"
 import { FraudDetectionAnalysis } from "./_components/fraud-detection-analysis"
 import { UploadFraudCase } from "./_components/upload-fraud-case"
@@ -69,7 +69,7 @@ export default function DashboardPage() {
               <CardFraudOverview />
               <CardFraudTypeDistribution />
             </div>
-            <RecentCardFraudAttempts />
+            <FraudDetectionTable type="overview"/>
           </TabsContent>
           <TabsContent value="analysis" className="space-y-4">
             <FraudDetectionAnalysis transaction={sampleTransaction} />
@@ -78,7 +78,7 @@ export default function DashboardPage() {
             <CardFraudTrendChart />
           </TabsContent>
           <TabsContent value="alerts" className="space-y-4">
-            <RecentCardFraudAttempts showAll={true} />
+          <FraudDetectionTable showAll={true} type="alerts" />
           </TabsContent>
           <TabsContent value="upload" className="space-y-4">
             <UploadFraudCase />
