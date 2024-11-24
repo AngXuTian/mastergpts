@@ -78,7 +78,7 @@ function deg2rad(deg: number): number {
 }
 
 export function FraudDetectionAnalysis({ transaction }: { transaction: Transaction }) {
-  const [fraudScore, setFraudScore] = useState(() => calculateFraudScore(transaction))
+  const [fraudScore] = useState(() => calculateFraudScore(transaction))
 
   const getFraudLevel = (score: number) => {
     if (score < 30) return { level: 'Low', color: 'bg-green-500' }
