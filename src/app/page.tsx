@@ -70,7 +70,7 @@ export default function DashboardPage() {
               <CardFraudOverview />
               <CardFraudTypeDistribution />
             </div>
-            <FraudDetectionTable type="overview"/>
+            <FraudDetectionTable type="overview"  showAll={true}/>
           </TabsContent>
           <TabsContent value="analysis" className="space-y-4">
             <FraudDetectionAnalysis transaction={sampleTransaction} />
