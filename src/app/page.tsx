@@ -42,15 +42,15 @@ export default function DashboardPage() {
           <h2 className="text-3xl font-bold tracking-tight">Card Fraud Detection Dashboard</h2>
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview" className="flex items-center justify-center">
               <CreditCard className="mr-2 h-4 w-4" />
               Overview
             </TabsTrigger>
-            <TabsTrigger value="analysis" className="flex items-center justify-center">
+            {/* <TabsTrigger value="analysis" className="flex items-center justify-center">
               <AlertTriangle className="mr-2 h-4 w-4" />
               Fraud Analysis
-            </TabsTrigger>
+            </TabsTrigger> */}
             <TabsTrigger value="trends" className="flex items-center justify-center">
               <TrendingUp className="mr-2 h-4 w-4" />
               Trends
@@ -72,9 +72,9 @@ export default function DashboardPage() {
             </div>
             <FraudDetectionTable type="overview"  showAll={true}/>
           </TabsContent>
-          <TabsContent value="analysis" className="space-y-4">
+          {/* <TabsContent value="analysis" className="space-y-4">
             <FraudDetectionAnalysis transaction={sampleTransaction} />
-          </TabsContent>
+          </TabsContent> */}
           <TabsContent value="trends" className="space-y-4">
             <CardFraudTrendChart />
           </TabsContent>
