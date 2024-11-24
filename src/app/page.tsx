@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CreditCard, TrendingUp, AlertTriangle, Bell, Upload } from 'lucide-react'
-import { FraudDetectionAnalysis } from "./dashboard/_components/fraud-detection-analysis"
+import { CreditCard, TrendingUp, Bell, Upload } from 'lucide-react'
 import { CardFraudTrendChart } from "./dashboard/_components/card-fraud-trend-chart"
 import { CardFraudMetricsCards } from "./dashboard/_components/card-fraud-metrics-cards"
 import { CardFraudOverview } from "./dashboard/_components/card-fraud-overview"
@@ -8,31 +7,6 @@ import { CardFraudTypeDistribution } from "./dashboard/_components/card-fraud-ty
 import { FraudDetectionTable } from "./dashboard/_components/recent-card-fraud-attempts"
 import { UploadFraudCase } from "./dashboard/_components/upload-fraud-case"
 
-
-const sampleTransaction = {
-  id: 1,
-  trans_date_trans_time: "2023-11-23 03:20:30",
-  cc_num: 4321567890123456,
-  merchant: "LuxuryWatches Co.",
-  category: "Jewelry",
-  amt: 5000.00,
-  first: "John",
-  last: "Doe",
-  gender: "M",
-  street: "123 Main St",
-  city: "Las Vegas",
-  state: "NV",
-  zip: 89101,
-  lat: 36.1699,
-  long: -115.1398,
-  city_pop: 651319,
-  job: "Software Engineer",
-  dob: "1985-05-15",
-  trans_num: "2b9f3a1c8e",
-  unix_time: 1700748030,
-  merch_lat: 36.1219,
-  merch_long: -115.1711
-}
 
 export default function DashboardPage() {
   return (

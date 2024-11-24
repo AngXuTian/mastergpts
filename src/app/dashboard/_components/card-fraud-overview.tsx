@@ -43,11 +43,11 @@ export function CardFraudOverview() {
               fontSize={12}
               tickLine={false}
               axisLine={false}
-              tickFormatter={(value) => `$${value / 1000}k`}
+              tickFormatter={(value) => `RM${value / 1000}k`}
             />
             <Tooltip />
             <Bar yAxisId="left" dataKey="fraudAttempts" fill="#8884d8" radius={[4, 4, 0, 0]} name="Fraud Attempts" />
-            <Bar yAxisId="right" dataKey="preventedLoss" fill="#82ca9d" radius={[4, 4, 0, 0]} name="Prevented Loss ($)" />
+            <Bar yAxisId="right" dataKey="preventedLoss" fill="#82ca9d" radius={[4, 4, 0, 0]} name="Prevented Loss (RM)" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

@@ -447,7 +447,7 @@ export function FraudDetectionTable({ showAll = false, type = "" }) {
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">{attempt.trans_date_trans_time}</td>
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">{attempt.merchant}</td>
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">{attempt.category}</td>
-                        <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">${attempt.amt.toFixed(2)}</td>
+                        <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">RM{attempt.amt.toFixed(2)}</td>
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">{`${attempt.first} ${attempt.last}`}</td>
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">{attempt.city}</td>
                         <td className="p-4 align-middle [&:has([role=checkbox])]:pr-0">
